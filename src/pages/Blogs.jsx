@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import BlogCards from "../components/BlogCards";
-import { selectedCategory } from "../features/blogSlice";
 
 function Blogs() {
   const { getBlogs, getCategories } = useBlogRequest();
@@ -26,7 +25,7 @@ function Blogs() {
 
   useEffect(() => {
     getBlogs(1, selectedCategory);
-  }, [selectedCategory, setSelectedCategory]);
+  }, [selectedCategory]);
 
   const handleSearch = () => {
     if (search.trim()) {
@@ -37,6 +36,9 @@ function Blogs() {
 
   const handlePage = (e, val) => {
     getBlogs(val, selectedCategory, search);
+  };
+  const handleReload = () => {
+    window.location.reload();
   };
 
   return (
@@ -132,32 +134,60 @@ function Blogs() {
           </Button>
         </Box>
       </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {data
-          .filter((blog) => blog.isPublish === true)
-          .map((blog) => (
-            <BlogCards blog={blog} />
-          ))}
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "2rem",
-        }}
-      >
-        <Pagination onChange={handlePage} count={pages.total} color="primary" />
-      </Box>
+      {data.length > 0 ? (
+        <>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              minHeight:"70vh"
+            }}
+          >
+            {data
+              .filter((blog) => blog.isPublish === true)
+              .map((blog) => (
+                <BlogCards blog={blog} />
+              ))}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "2rem",
+            }}
+          >
+            <Pagination
+              onChange={handlePage}
+              count={pages.total}
+              color="primary"
+            />
+          </Box>
+        </>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            height: "60vh",
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{ textAlign: "center", marginBottom: "3rem" }}
+          >
+            The blog you are looking for was not found.
+          </Typography>
+          <Button onClick={handleReload} variant="contained">
+            Reload the page
+          </Button>
+        </Box>
+      )}
     </>
   );
 }
