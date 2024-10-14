@@ -6,12 +6,10 @@ const authSlice = createSlice({
     token: "",
     username: "",
     loading: "",
-    error: "",
   },
   reducers: {
     start: (state) => {
       state.loading = true;
-      state.error = false;
     },
     loginSuccess: (state, { payload }) => {
       state.token = payload.token;
@@ -30,7 +28,6 @@ const authSlice = createSlice({
     },
     fail: (state) => {
       state.loading = false;
-      state.error = true;
     },
   },
 });

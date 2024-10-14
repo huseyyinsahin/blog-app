@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Stack,
   Box,
@@ -7,11 +7,13 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Typography,
   Button,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useAuthRequest from "../hooks/useAuthRequest";
@@ -22,15 +24,6 @@ const pages = [
   { name: "Contact", to: "/contact" },
   { name: "Login", to: "/login" },
   { name: "Register", to: "/register" },
-];
-
-const userPages = [
-  { name: "Blogs", to: "/" },
-  { name: "About", to: "/about" },
-  { name: "Contact", to: "/contact" },
-  { name: "New Blog", to: "/newBlog" },
-  { name: "My Blogs", to: "/myblogs" },
-  { name: "Profile", to: "/profile" },
 ];
 
 const Nav = () => {
@@ -84,7 +77,6 @@ const Nav = () => {
 
 const NavList = ({ ...props }) => {
   const { username } = useSelector((state) => state.auth);
-  const { logout } = useAuthRequest();
 
   return (
     <Stack
@@ -96,7 +88,7 @@ const NavList = ({ ...props }) => {
     >
       {username ? (
         <>
-          {userPages.map((page) => (
+          {pages.slice(0, 3).map((page) => (
             <NavLink
               to={page.to}
               key={page.to}
@@ -105,28 +97,12 @@ const NavList = ({ ...props }) => {
                 textDecoration: "none",
                 fontSize: "1.2rem",
                 fontWeight: isActive ? "bold" : "normal",
-                transition: "color 0.3s ease",
+                transition: "color 0.5s ease",
               })}
             >
               {page.name}
             </NavLink>
           ))}
-          <Button
-            onClick={logout}
-            variant="contained"
-            size="small"
-            sx={{
-              padding: "4px 8px",
-              fontSize: "0.9rem",
-              backgroundColor: "#0288D1",
-              color: "white",
-              "&:hover": {
-                backgroundColor: "#0277BD",
-              },
-            }}
-          >
-            Logout
-          </Button>
         </>
       ) : (
         pages.map((page) => (
@@ -138,7 +114,7 @@ const NavList = ({ ...props }) => {
               textDecoration: "none",
               fontSize: "1.2rem",
               fontWeight: isActive ? "bold" : "normal",
-              transition: "color 0.3s ease",
+              transition: "color 0.5s ease",
             })}
           >
             {page.name}
@@ -150,6 +126,23 @@ const NavList = ({ ...props }) => {
 };
 
 const Header = () => {
+  const { logout } = useAuthRequest();
+  const { username } = useSelector((state) => state.auth);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+  useEffect(() => {
+    if (username) {
+      setAnchorEl(null);
+    }
+  }, [username]);
+
   return (
     <>
       <AppBar
@@ -172,15 +165,89 @@ const Header = () => {
             <NavLink
               to="/"
               style={{
-                color: "black",
                 textDecoration: "none",
                 fontSize: "1.8rem",
                 fontWeight: "bold",
+                background: "linear-gradient(90deg, #0277BD 0%, #00E5FF 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                marginLeft: "2rem",
               }}
             >
-              Blog
+              Infinite Blog
             </NavLink>
-            <Nav />
+
+            {!username && <Nav />}
+
+            {username && (
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                <Nav />
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls="user-menu"
+                  aria-haspopup="true"
+                  onClick={handleMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircleIcon
+                    fontSize="large"
+                    sx={{ color: "#0288D1" }}
+                  />
+                </IconButton>
+                <Menu
+                  id="user-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleMenuClose}
+                  PaperProps={{
+                    sx: { padding: "1rem", minWidth: "200px" },
+                  }}
+                >
+                  <MenuItem
+                    onClick={handleMenuClose}
+                    component={NavLink}
+                    to="/newBlog"
+                  >
+                    New Blog
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleMenuClose}
+                    component={NavLink}
+                    to="/myblogs"
+                  >
+                    My Blogs
+                  </MenuItem>
+                  <MenuItem
+                    onClick={handleMenuClose}
+                    component={NavLink}
+                    to="/profile"
+                  >
+                    Profile
+                  </MenuItem>
+                  <Button
+                    onClick={logout}
+                    variant="contained"
+                    size="small"
+                    sx={{
+                      padding: "4px 8px",
+                      fontSize: "0.9rem",
+                      backgroundColor: "#0288D1",
+                      color: "white",
+                      marginLeft: "2.6rem",
+                      marginTop: "10px",
+                      "&:hover": {
+                        backgroundColor: "#0277BD",
+                      },
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </Menu>
+              </Box>
+            )}
           </Toolbar>
         </Container>
       </AppBar>
