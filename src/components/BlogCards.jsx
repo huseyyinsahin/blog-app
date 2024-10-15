@@ -9,9 +9,16 @@ import { Box } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CommentIcon from "@mui/icons-material/Comment";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import noPhoto from "../assets/image/no-photo.jpg";
+import useBlogRequest from "../hooks/useBlogRequest";
+import { useSelector } from "react-redux";
 
-export default function BlogCards({ blog }) {
+export default function BlogCards({ blog, page, selectedCategory, search }) {
+  const { likeBlog } = useBlogRequest();
+  const { userId } = useSelector((state) => state.auth);
+  const userLike = blog.likes.some((like) => like === userId);
+  console.log(userLike);
   return (
     <>
       <Card
@@ -80,7 +87,17 @@ export default function BlogCards({ blog }) {
               borderRadius: { xs: "0 0 16px 16px", md: "0 0 16px 0" },
             }}
           >
-            <Button startIcon={<FavoriteBorderIcon />} size="small">
+            <Button
+              onClick={() => likeBlog(blog._id, page, selectedCategory, search)}
+              startIcon={
+                userLike ? (
+                  <FavoriteIcon sx={{ color: "red" }} />
+                ) : (
+                  <FavoriteBorderIcon />
+                )
+              }
+              size="small"
+            >
               {blog.likes.length}
             </Button>
             <Button startIcon={<CommentIcon />} size="small">

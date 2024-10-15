@@ -6,6 +6,7 @@ const blogSlice = createSlice({
     data: [],
     pages: {},
     categories: [],
+    detail:[],
     loading: "",
     error: "",
   },
@@ -22,6 +23,9 @@ const blogSlice = createSlice({
     categories: (state, { payload }) => {
       state.categories = payload.data;
     },
+    blogDetail:(state,{payload})=>{
+      state.detail=payload.data; //asd
+    },
     fail: (state) => {
       state.loading = false;
       state.error = true;
@@ -29,5 +33,5 @@ const blogSlice = createSlice({
   },
 });
 
-export const { start, blogData, fail,categories,selectedCategory } = blogSlice.actions;
+export const { start, blogData, fail,categories,selectedCategory,blogDetail } = blogSlice.actions;
 export default blogSlice.reducer;

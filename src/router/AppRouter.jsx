@@ -11,6 +11,7 @@ import NewBlog from "../pages/NewBlog";
 import MyBlogs from "../pages/MyBlogs";
 import PrivateRouter from "./PrivateRouter";
 import Footer from "../components/Footer";
+import Detail from "../pages/Detail";
 
 function AppRouter() {
   return (
@@ -35,6 +36,7 @@ function AppRouter() {
           <Route path="/newBlog" element={<NewBlog />} />
           <Route path="/myblogs" element={<MyBlogs />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/detail/:id" element={<Detail />} />
         </Route>
       </Routes>
     </>
