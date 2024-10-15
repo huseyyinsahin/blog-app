@@ -41,9 +41,9 @@ function useBlogRequest() {
   const likeBlog = async (id, pageCount, category, search) => {
     dispatch(start());
     try {
-      const { data } = await axiosToken.post(`blogs/${id}/postLike`);
+      await axiosToken.post(`blogs/${id}/postLike`);
       getBlogs(pageCount, category, search);
-      console.log(data);
+      getBlogDetail(id);
     } catch (error) {
       dispatch(fail());
     }
@@ -60,7 +60,18 @@ function useBlogRequest() {
     }
   };
 
-  return { getBlogs, getCategories, likeBlog, getBlogDetail };
+  const commentBlog = async (comment) => {
+    dispatch(start());
+    try {
+      await axiosToken.post(`comments`, comment);
+      toastSuccessNotify("Comment added");
+    } catch (error) {
+      dispatch(fail());
+      toastErrorNotify("Unable to add comment!");
+    }
+  };
+
+  return { getBlogs, getCategories, likeBlog, getBlogDetail, commentBlog };
 }
 
 export default useBlogRequest;

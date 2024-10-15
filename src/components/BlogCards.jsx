@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 export default function BlogCards({ blog, page, selectedCategory, search }) {
-  const { likeBlog, getBlogDetail } = useBlogRequest();
+  const { likeBlog } = useBlogRequest();
   const { user } = useSelector((state) => state.auth);
   const userLike = blog.likes.some((like) => like === user._id);
   console.log(userLike);
@@ -42,7 +42,6 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
           height="100%"
           onClick={() => {
             if (user) {
-              getBlogDetail(blog._id);
               navigate(`/detail/${blog._id}`);
             } else {
               toastErrorNotify("Please log in to view the blog details!");
@@ -75,7 +74,6 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             sx={{ cursor: "pointer" }}
             onClick={() => {
               if (user) {
-                getBlogDetail(blog._id);
                 navigate(`/detail/${blog._id}`);
               } else {
                 toastErrorNotify("Please log in to view the blog details!");

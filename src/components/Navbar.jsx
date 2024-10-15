@@ -10,6 +10,7 @@ import {
   Button,
   Menu,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -128,7 +129,6 @@ const NavList = ({ ...props }) => {
 const Header = () => {
   const { logout } = useAuthRequest();
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -198,6 +198,15 @@ const Header = () => {
                     sx={{ color: "#0288D1" }}
                   />
                 </IconButton>
+                <Typography
+                  sx={{
+                    textAlign: "center",
+                    color: "black",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {user.firstName}
+                </Typography>
                 <Menu
                   id="user-menu"
                   anchorEl={anchorEl}

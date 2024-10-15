@@ -25,6 +25,7 @@ const blogSlice = createSlice({
     },
     blogDetail: (state, { payload }) => {
       state.detail = payload.data;
+      state.loading = false;
     },
     fail: (state) => {
       state.loading = false;
@@ -33,11 +34,6 @@ const blogSlice = createSlice({
   },
 });
 
-export const {
-  start,
-  blogData,
-  fail,
-  categories,
-  blogDetail,
-} = blogSlice.actions;
+export const { start, blogData, fail, categories, blogDetail } =
+  blogSlice.actions;
 export default blogSlice.reducer;
