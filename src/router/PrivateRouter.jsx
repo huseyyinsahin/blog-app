@@ -1,16 +1,10 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 const PrivateRouter = () => {
-  const { username } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
-  if (!username) {
-    toastErrorNotify("Please log in!");
-    return <Navigate to="/" />;
-  }
-
-  return username && <Outlet />;
+  return user ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRouter;

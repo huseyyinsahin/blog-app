@@ -3,6 +3,7 @@ import axios from "axios";
 
 function useAxios() {
   const { token } = useSelector((state) => state.auth);
+
   const axiosToken = axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}/`,
     headers: { Authorization: `Token ${token}` },

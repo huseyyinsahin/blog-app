@@ -20,7 +20,7 @@ function Blogs() {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState("");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     getBlogs();
@@ -75,6 +75,7 @@ function Blogs() {
               .filter((blog) => blog.isPublish === true)
               .map((blog) => (
                 <BlogCards
+                  key={blog._id}
                   blog={blog}
                   page={page}
                   selectedCategory={selectedCategory}

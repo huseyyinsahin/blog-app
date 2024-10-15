@@ -1,5 +1,5 @@
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   blogData,
   fail,

@@ -76,7 +76,7 @@ const Nav = () => {
 };
 
 const NavList = ({ ...props }) => {
-  const { username } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <Stack
@@ -86,7 +86,7 @@ const NavList = ({ ...props }) => {
       alignItems="center"
       {...props}
     >
-      {username ? (
+      {user ? (
         <>
           {pages.slice(0, 3).map((page) => (
             <NavLink
@@ -127,7 +127,8 @@ const NavList = ({ ...props }) => {
 
 const Header = () => {
   const { logout } = useAuthRequest();
-  const { username } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
+  console.log(user);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -138,10 +139,10 @@ const Header = () => {
     setAnchorEl(null);
   };
   useEffect(() => {
-    if (username) {
+    if (user) {
       setAnchorEl(null);
     }
-  }, [username]);
+  }, [user]);
 
   return (
     <>
@@ -178,9 +179,9 @@ const Header = () => {
               Infinite Blog
             </NavLink>
 
-            {!username && <Nav />}
+            {!user && <Nav />}
 
-            {username && (
+            {user && (
               <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <Nav />
                 <IconButton

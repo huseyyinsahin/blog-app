@@ -35,6 +35,7 @@ const Register = () => {
         /[@$!%*?&]+/,
         "Password must contain at least one special character (@$!%*?&)"
       ),
+    image: string().url("Please enter a valid URL"),
   });
 
   return (

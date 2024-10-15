@@ -38,7 +38,6 @@ export const {
   blogData,
   fail,
   categories,
-  selectedCategory,
   blogDetail,
 } = blogSlice.actions;
 export default blogSlice.reducer;

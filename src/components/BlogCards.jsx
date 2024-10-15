@@ -14,17 +14,17 @@ import noPhoto from "../assets/image/no-photo.jpg";
 import useBlogRequest from "../hooks/useBlogRequest";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 export default function BlogCards({ blog, page, selectedCategory, search }) {
   const { likeBlog, getBlogDetail } = useBlogRequest();
-  const { userId } = useSelector((state) => state.auth);
-  const userLike = blog.likes.some((like) => like === userId);
+  const { user } = useSelector((state) => state.auth);
+  const userLike = blog.likes.some((like) => like === user._id);
   console.log(userLike);
   const navigate = useNavigate();
   return (
     <>
       <Card
-        key={blog._id}
         sx={{
           width: { xs: "100%", sm: "80%", md: "70%" },
           margin: "1rem",
@@ -41,8 +41,12 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
           alt="blog image"
           height="100%"
           onClick={() => {
-            getBlogDetail(blog._id);
-            navigate(`/detail/${blog._id}`);
+            if (user) {
+              getBlogDetail(blog._id);
+              navigate(`/detail/${blog._id}`);
+            } else {
+              toastErrorNotify("Please log in to view the blog details!");
+            }
           }}
           sx={{
             width: { xs: "100%", md: "500px" },
@@ -68,10 +72,14 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
           }}
         >
           <CardContent
-          sx={{cursor:"pointer"}}
+            sx={{ cursor: "pointer" }}
             onClick={() => {
-              getBlogDetail(blog._id);
-              navigate(`/detail/${blog._id}`);
+              if (user) {
+                getBlogDetail(blog._id);
+                navigate(`/detail/${blog._id}`);
+              } else {
+                toastErrorNotify("Please log in to view the blog details!");
+              }
             }}
           >
             <Typography
@@ -101,7 +109,13 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             }}
           >
             <Button
-              onClick={() => likeBlog(blog._id, page, selectedCategory, search)}
+              onClick={() => {
+                if (user) {
+                  likeBlog(blog._id, page, selectedCategory, search);
+                } else {
+                  toastErrorNotify("Please log in to like this blog!");
+                }
+              }}
               startIcon={
                 userLike ? (
                   <FavoriteIcon sx={{ color: "red" }} />

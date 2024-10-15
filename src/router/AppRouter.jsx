@@ -12,6 +12,7 @@ import MyBlogs from "../pages/MyBlogs";
 import PrivateRouter from "./PrivateRouter";
 import Footer from "../components/Footer";
 import Detail from "../pages/Detail";
+import NotFound from "../pages/NotFound";
 
 function AppRouter() {
   return (
@@ -38,6 +39,7 @@ function AppRouter() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
