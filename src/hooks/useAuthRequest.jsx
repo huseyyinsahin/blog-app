@@ -24,7 +24,7 @@ const useAuthRequest = () => {
       navigate("/");
       console.log(data);
     } catch (error) {
-      toastErrorNotify("Login failed");
+      toastErrorNotify("Login failed!");
       dispatch(fail());
     }
   };
@@ -38,7 +38,7 @@ const useAuthRequest = () => {
       navigate("/");
       console.log(data);
     } catch (error) {
-      toastErrorNotify("Register failed");
+      toastErrorNotify("Register failed!");
       dispatch(fail());
     }
   };
@@ -51,7 +51,7 @@ const useAuthRequest = () => {
       dispatch(logoutSuccess());
       navigate("/");
     } catch (error) {
-      toastErrorNotify("Logout failed");
+      toastErrorNotify("Logout failed!");
       dispatch(fail());
     }
   };

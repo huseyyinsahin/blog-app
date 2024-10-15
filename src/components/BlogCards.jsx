@@ -13,12 +13,14 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import noPhoto from "../assets/image/no-photo.jpg";
 import useBlogRequest from "../hooks/useBlogRequest";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogCards({ blog, page, selectedCategory, search }) {
-  const { likeBlog } = useBlogRequest();
+  const { likeBlog, getBlogDetail } = useBlogRequest();
   const { userId } = useSelector((state) => state.auth);
   const userLike = blog.likes.some((like) => like === userId);
   console.log(userLike);
+  const navigate = useNavigate();
   return (
     <>
       <Card
@@ -38,9 +40,14 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
           component="img"
           alt="blog image"
           height="100%"
+          onClick={() => {
+            getBlogDetail(blog._id);
+            navigate(`/detail/${blog._id}`);
+          }}
           sx={{
             width: { xs: "100%", md: "500px" },
             height: { xs: "200px", md: "100%" },
+            cursor: "pointer",
             borderRadius: { xs: "16px 16px 0 0", md: "16px 0 0 16px" },
             objectFit: "cover",
           }}
@@ -60,7 +67,13 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             width: "100%",
           }}
         >
-          <CardContent>
+          <CardContent
+          sx={{cursor:"pointer"}}
+            onClick={() => {
+              getBlogDetail(blog._id);
+              navigate(`/detail/${blog._id}`);
+            }}
+          >
             <Typography
               gutterBottom
               variant="h5"

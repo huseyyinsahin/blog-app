@@ -52,7 +52,7 @@ function useBlogRequest() {
   const getBlogDetail = async (id) => {
     dispatch(start());
     try {
-      const { data } = await axiosToken.post(`blogs/${id}`);
+      const { data } = await axiosToken(`blogs/${id}`);
       dispatch(blogDetail(data));
       console.log(data);
     } catch (error) {

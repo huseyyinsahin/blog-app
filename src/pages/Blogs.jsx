@@ -5,8 +5,6 @@ import {
   Button,
   CircularProgress,
   Pagination,
-  Stack,
-  TextField,
   Typography,
 } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -31,11 +29,7 @@ function Blogs() {
 
   useEffect(() => {
     getBlogs(1, selectedCategory, search);
-  }, [selectedCategory]);
-
-  useEffect(() => {
-    getBlogs(1, selectedCategory, search);
-  }, [search]);
+  }, [selectedCategory, search]);
 
   const handlePage = (e, val) => {
     getBlogs(val, selectedCategory, search);
@@ -99,6 +93,7 @@ function Blogs() {
           >
             <Pagination
               onChange={handlePage}
+              page={page}
               count={pages.total}
               color="primary"
             />
