@@ -64,7 +64,7 @@ function BlogDetail() {
         height: "100vh",
       }}
     >
-      <CircularProgress />
+      <CircularProgress size={100} />
     </div>
   ) : (
     <Card
@@ -157,7 +157,7 @@ function BlogDetail() {
           color="text.secondary"
           sx={{ fontStyle: "italic" }}
         >
-          {new Date(detail.createdAt).toLocaleString("tr-TR")}
+          {new Date(detail.createdAt).toLocaleString("en-EN")}
         </Typography>
       </Box>
 
@@ -265,7 +265,7 @@ function BlogDetail() {
                 variant="body2"
                 sx={{ color: "gray", fontSize: "0.7rem" }}
               >
-                {new Date(comment.updatedAt).toLocaleString("tr-TR")}
+                {new Date(comment.updatedAt).toLocaleString("en-EN")}
               </Typography>
               <Typography variant="body2" sx={{ color: "#555" }}>
                 {comment.comment}

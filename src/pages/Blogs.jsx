@@ -58,7 +58,7 @@ function Blogs() {
             height: "100vh",
           }}
         >
-          <CircularProgress />
+          <CircularProgress size={150} />
         </div>
       ) : data.length > 0 ? (
         <>
