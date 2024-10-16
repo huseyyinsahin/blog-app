@@ -19,7 +19,6 @@ const useAuthRequest = () => {
     dispatch(start());
     try {
       const { data } = await axiosPublic.post("/auth/login/", userData);
-      toastSuccessNotify("Login successful");
       dispatch(loginSuccess(data));
       navigate("/");
       console.log(data);
@@ -44,7 +43,6 @@ const useAuthRequest = () => {
   };
 
   const logout = async () => {
-    dispatch(start());
     try {
       await axiosToken("/auth/logout/");
       toastSuccessNotify("Logout successful");
@@ -52,11 +50,20 @@ const useAuthRequest = () => {
       navigate("/");
     } catch (error) {
       toastErrorNotify("Logout failed!");
-      dispatch(fail());
     }
   };
 
-  return { register, login, logout };
+  const userUpdate = async (id, userData) => {
+    try {
+      await axiosToken.put(`/users/${id}`, userData);
+      toastSuccessNotify("User update successful");
+      login({ username: userData.username, password: userData.password });
+    } catch (error) {
+      toastErrorNotify("You failed to update the user!");
+    }
+  };
+
+  return { register, login, logout, userUpdate };
 };
 
 export default useAuthRequest;

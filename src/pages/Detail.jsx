@@ -114,7 +114,7 @@ function BlogDetail() {
           color: "#333",
         }}
       >
-        {detail.title}
+        {detail?.title}
       </Typography>
       <Typography
         sx={{
@@ -124,7 +124,7 @@ function BlogDetail() {
           marginBottom: "1rem",
         }}
       >
-        {detail.categoryId.name}
+        {detail.categoryId?.name}
       </Typography>
       <CardMedia
         component="img"
