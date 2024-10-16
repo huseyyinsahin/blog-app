@@ -22,6 +22,7 @@ const blogSlice = createSlice({
     },
     categories: (state, { payload }) => {
       state.categories = payload.data;
+      state.loading = false;
     },
     blogDetail: (state, { payload }) => {
       state.detail = payload.data;

@@ -29,12 +29,13 @@ function useBlogRequest() {
   };
 
   const getCategories = async () => {
+    dispatch(start());
     try {
       const { data } = await axiosToken("categories/");
       dispatch(categories(data));
       console.log(data);
     } catch (error) {
-      console.log(error);
+      dispatch(fail());
     }
   };
 
@@ -73,13 +74,12 @@ function useBlogRequest() {
   };
 
   const postNewBlog = async (newBlogData) => {
-    dispatch(start());
     try {
       await axiosToken.post(`blogs`, newBlogData);
       toastSuccessNotify("Blog added");
     } catch (error) {
-      dispatch(fail());
       toastErrorNotify("Unable to add Blog!");
+      console.log(error);
     }
   };
 
