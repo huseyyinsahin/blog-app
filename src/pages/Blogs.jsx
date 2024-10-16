@@ -29,6 +29,7 @@ function Blogs() {
 
   useEffect(() => {
     getBlogs(1, selectedCategory, search);
+    setPage(1);
   }, [selectedCategory, search]);
 
   const handlePage = (e, val) => {
