@@ -6,6 +6,7 @@ import {
   start,
   categories,
   blogDetail,
+  userBlogs,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 
@@ -80,6 +81,19 @@ function useBlogRequest() {
     }
   };
 
+  const getUserBlogs = async (id) => {
+    dispatch(start());
+    try {
+      const { data } = await axiosToken(`blogs?author=${id}`);
+      console.log(data);
+      dispatch(userBlogs(data));
+      // navigate
+    } catch (error) {
+      dispatch(fail());
+      console.log(error);
+    }
+  };
+
   return {
     getBlogs,
     getCategories,
@@ -87,6 +101,7 @@ function useBlogRequest() {
     getBlogDetail,
     commentBlog,
     postNewBlog,
+    getUserBlogs,
   };
 }
 
