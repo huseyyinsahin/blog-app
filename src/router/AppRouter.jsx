@@ -35,7 +35,7 @@ function AppRouter() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="" element={<PrivateRouter />}>
-              <Route path="/newBlog" element={<NewBlog />} />
+              <Route path="/newblog" element={<NewBlog />} />
               <Route path="/myblogs" element={<MyBlogs />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/detail/:id" element={<Detail />} />

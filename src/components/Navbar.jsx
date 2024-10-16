@@ -219,7 +219,7 @@ const Header = () => {
                   <MenuItem
                     onClick={handleMenuClose}
                     component={NavLink}
-                    to="/newBlog"
+                    to="/newblog"
                   >
                     New Blog
                   </MenuItem>
