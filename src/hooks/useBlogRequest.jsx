@@ -60,11 +60,12 @@ function useBlogRequest() {
     }
   };
 
-  const commentBlog = async (comment) => {
+  const commentBlog = async (comment, id) => {
     dispatch(start());
     try {
       await axiosToken.post(`comments`, comment);
       toastSuccessNotify("Comment added");
+      await getBlogDetail(id);
     } catch (error) {
       dispatch(fail());
       toastErrorNotify("Unable to add comment!");

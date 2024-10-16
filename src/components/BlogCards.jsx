@@ -20,7 +20,6 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
   const { likeBlog } = useBlogRequest();
   const { user } = useSelector((state) => state.auth);
   const userLike = blog.likes.some((like) => like === user._id);
-  console.log(userLike);
   const navigate = useNavigate();
   return (
     <>

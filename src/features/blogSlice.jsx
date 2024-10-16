@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const blogSlice = createSlice({
   name: "blog",
   initialState: {
-    data: [],
+    blogsData: [],
     pages: {},
     categories: [],
     detail: [],
@@ -16,7 +16,7 @@ const blogSlice = createSlice({
       state.error = false;
     },
     blogData: (state, { payload }) => {
-      state.data = payload.data;
+      state.blogsData = payload.data;
       state.pages = payload.details.pages;
       state.loading = false;
     },

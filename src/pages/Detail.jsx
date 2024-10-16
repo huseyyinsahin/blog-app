@@ -45,14 +45,11 @@ function BlogDetail() {
   };
 
   const handleCommentSubmit = () => {
-    commentBlog(comment);
+    commentBlog(comment,id);
     setComment({
       blogId: detail._id,
       comment: "",
     });
-    setTimeout(() => {
-      getBlogDetail(id);
-    }, 2000);
   };
 
   return loading ? (

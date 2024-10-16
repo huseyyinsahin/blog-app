@@ -14,7 +14,7 @@ import Search from "../components/Search";
 
 function Blogs() {
   const { getBlogs, getCategories } = useBlogRequest();
-  const { data, pages, categories, loading } = useSelector(
+  const { blogsData, pages, categories, loading } = useSelector(
     (state) => state.blog
   );
 
@@ -61,7 +61,7 @@ function Blogs() {
         >
           <CircularProgress size={150} />
         </div>
-      ) : data.length > 0 ? (
+      ) : blogsData.length > 0 ? (
         <>
           <Box
             sx={{
@@ -72,7 +72,7 @@ function Blogs() {
               minHeight: "70vh",
             }}
           >
-            {data.map((blog) => (
+            {blogsData.map((blog) => (
               <BlogCards
                 key={blog._id}
                 blog={blog}
