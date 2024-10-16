@@ -116,7 +116,16 @@ function BlogDetail() {
       >
         {detail.title}
       </Typography>
-
+      <Typography
+        sx={{
+          fontSize: "1.2rem",
+          textAlign: "center",
+          color: "gray",
+          marginBottom: "1rem",
+        }}
+      >
+        {detail.categoryId.name}
+      </Typography>
       <CardMedia
         component="img"
         height="400"

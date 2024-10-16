@@ -87,6 +87,9 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             >
               {blog.title}
             </Typography>
+            <Typography variant="subtitle2" color="text.secondary">
+              {new Date(blog.createdAt).toLocaleDateString("en-EN")}
+            </Typography>
             <Box>
               <Box
                 sx={{ color: "#01579b", fontSize: "1rem" }}
