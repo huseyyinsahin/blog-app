@@ -71,7 +71,25 @@ function useBlogRequest() {
     }
   };
 
-  return { getBlogs, getCategories, likeBlog, getBlogDetail, commentBlog };
+  const postNewBlog = async (newBlogData) => {
+    dispatch(start());
+    try {
+      await axiosToken.post(`blogs`, newBlogData);
+      toastSuccessNotify("Blog added");
+    } catch (error) {
+      dispatch(fail());
+      toastErrorNotify("Unable to add Blog!");
+    }
+  };
+
+  return {
+    getBlogs,
+    getCategories,
+    likeBlog,
+    getBlogDetail,
+    commentBlog,
+    postNewBlog,
+  };
 }
 
 export default useBlogRequest;

@@ -71,17 +71,15 @@ function Blogs() {
               minHeight: "70vh",
             }}
           >
-            {data
-              .filter((blog) => blog.isPublish === true)
-              .map((blog) => (
-                <BlogCards
-                  key={blog._id}
-                  blog={blog}
-                  page={page}
-                  selectedCategory={selectedCategory}
-                  search={search}
-                />
-              ))}
+            {data.map((blog) => (
+              <BlogCards
+                key={blog._id}
+                blog={blog}
+                page={page}
+                selectedCategory={selectedCategory}
+                search={search}
+              />
+            ))}
           </Box>
           <Box
             sx={{
