@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useBlogRequest from "../hooks/useBlogRequest";
 import {
+  Alert,
   Box,
   Button,
   CircularProgress,
@@ -14,7 +15,7 @@ import Search from "../components/Search";
 
 function Blogs() {
   const { getBlogs, getCategories } = useBlogRequest();
-  const { blogsData, pages, categories, loading } = useSelector(
+  const { blogsData, pages, categories, loading, error } = useSelector(
     (state) => state.blog
   );
 
@@ -38,11 +39,19 @@ function Blogs() {
   };
 
   const handleReload = () => {
-    window.location.reload();
+    getBlogs();
+    getCategories();
   };
 
   return (
     <>
+      {error && (
+        <Alert severity="error" sx={{ width: "100%" }}>
+          An error occurred while loading the site. Please try refreshing the
+          page!
+        </Alert>
+      )}
+
       <Categories
         categories={categories}
         setSelectedCategory={setSelectedCategory}

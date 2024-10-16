@@ -40,13 +40,12 @@ function useBlogRequest() {
   };
 
   const likeBlog = async (id, pageCount, category, search) => {
-    dispatch(start());
     try {
       await axiosToken.post(`blogs/${id}/postLike`);
       getBlogs(pageCount, category, search);
       getBlogDetail(id);
     } catch (error) {
-      dispatch(fail());
+      toastErrorNotify("The like operation failed!");
     }
   };
 
@@ -62,13 +61,11 @@ function useBlogRequest() {
   };
 
   const commentBlog = async (comment, id) => {
-    dispatch(start());
     try {
       await axiosToken.post(`comments`, comment);
       toastSuccessNotify("Comment added");
       await getBlogDetail(id);
     } catch (error) {
-      dispatch(fail());
       toastErrorNotify("Unable to add comment!");
     }
   };

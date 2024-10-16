@@ -11,6 +11,8 @@ import {
   Button,
   TextField,
   CircularProgress,
+  Alert,
+  Container,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -25,7 +27,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 
 function BlogDetail() {
-  const { detail, loading } = useSelector((state) => state.blog);
+  const { detail, loading, error } = useSelector((state) => state.blog);
   const { user } = useSelector((state) => state.auth);
   const { getBlogDetail, likeBlog, commentBlog } = useBlogRequest();
   const userLike = detail?.likes?.some((like) => like === user._id);
@@ -45,14 +47,35 @@ function BlogDetail() {
   };
 
   const handleCommentSubmit = () => {
-    commentBlog(comment,id);
+    commentBlog(comment, id);
     setComment({
       blogId: detail._id,
       comment: "",
     });
   };
 
-  return loading ? (
+  const handleReload = () => {
+    getBlogDetail(id);
+  };
+
+  return error ? (
+    <Container
+      sx={{
+        height: "90vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Alert severity="error" sx={{ width: "100%" }}>
+        An error occurred while loading the site. Please try refreshing the
+        page!
+      </Alert>
+      <Button onClick={handleReload} variant="contained">
+        Reload the page
+      </Button>
+    </Container>
+  ) : loading ? (
     <div
       style={{
         display: "flex",
