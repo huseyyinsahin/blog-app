@@ -29,9 +29,15 @@ function Blogs() {
   }, []);
 
   useEffect(() => {
+    setSearch("");
     getBlogs(1, selectedCategory, search);
     setPage(1);
-  }, [selectedCategory, search]);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    getBlogs(1, selectedCategory, search);
+    setPage(1);
+  }, [search]);
 
   const handlePage = (e, val) => {
     getBlogs(val, selectedCategory, search);
