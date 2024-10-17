@@ -18,7 +18,6 @@ function AppRouter() {
   return (
     <>
       <Navbar />
-   
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -41,7 +40,6 @@ function AppRouter() {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-     
     </>
   );
 }
