@@ -31,4 +31,4 @@ The technologies used in this project are as follows:
 
 ## Live
 
-[Live]()
+[Live](https://blog-app-delta-plum.vercel.app/)
