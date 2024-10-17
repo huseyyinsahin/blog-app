@@ -23,6 +23,9 @@ function Blogs() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
+  const [categoryChange, setCategoryChange] = useState(false);
+  const handleCategoryChange = () => setCategoryChange(!categoryChange);
+
   useEffect(() => {
     getBlogs();
     getCategories();
@@ -32,7 +35,7 @@ function Blogs() {
     setSearch("");
     getBlogs(1, selectedCategory, search);
     setPage(1);
-  }, [selectedCategory]);
+  }, [selectedCategory, categoryChange]);
 
   useEffect(() => {
     getBlogs(1, selectedCategory, search);
@@ -61,6 +64,7 @@ function Blogs() {
       <Categories
         categories={categories}
         setSelectedCategory={setSelectedCategory}
+        handleCategoryChange={handleCategoryChange}
       />
 
       <Search setSearch={setSearch} search={search} />

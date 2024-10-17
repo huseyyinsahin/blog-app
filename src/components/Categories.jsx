@@ -1,7 +1,7 @@
 import { Box, Button, Stack } from "@mui/material";
 import React from "react";
 
-function Categories({ categories, setSelectedCategory }) {
+function Categories({ categories, setSelectedCategory, handleCategoryChange }) {
   return (
     <Box
       sx={{
@@ -25,7 +25,10 @@ function Categories({ categories, setSelectedCategory }) {
             borderRadius: "20px",
             padding: "0.5rem 1.5rem",
           }}
-          onClick={() => setSelectedCategory("")}
+          onClick={() => {
+            setSelectedCategory("");
+            handleCategoryChange();
+          }}
         >
           All Blogs
         </Button>
@@ -40,7 +43,10 @@ function Categories({ categories, setSelectedCategory }) {
               borderRadius: "20px",
               padding: "0.5rem 1.5rem",
             }}
-            onClick={() => setSelectedCategory(_id)}
+            onClick={() => {
+              setSelectedCategory(_id);
+              handleCategoryChange();
+            }}
           >
             {name}
           </Button>
