@@ -87,9 +87,31 @@ function useBlogRequest() {
       const { data } = await axiosToken(`blogs?author=${id}`);
       console.log(data);
       dispatch(userBlogs(data));
-      // navigate
+      getCategories();
     } catch (error) {
       dispatch(fail());
+      console.log(error);
+    }
+  };
+
+  const deleteUserBlogs = async (id, userId) => {
+    try {
+      await axiosToken.delete(`blogs/${id}`);
+      toastSuccessNotify("Blog successfully deleted");
+      getUserBlogs(userId);
+    } catch (error) {
+      toastErrorNotify("Blog could not be deleted!");
+      console.log(error);
+    }
+  };
+
+  const updateUserBlogs = async (id, userId, updateBlog) => {
+    try {
+      await axiosToken.put(`blogs/${id}`, updateBlog);
+      toastSuccessNotify("Blog successfully updated.");
+      getUserBlogs(userId);
+    } catch (error) {
+      toastErrorNotify("Blog update failed!");
       console.log(error);
     }
   };
@@ -102,6 +124,8 @@ function useBlogRequest() {
     commentBlog,
     postNewBlog,
     getUserBlogs,
+    deleteUserBlogs,
+    updateUserBlogs,
   };
 }
 
