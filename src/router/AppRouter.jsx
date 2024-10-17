@@ -5,7 +5,6 @@ import Register from "../pages/Register";
 import Navbar from "../components/Navbar";
 import Blogs from "../pages/Blogs";
 import About from "../pages/About";
-import Contact from "../pages/Contact";
 import Profile from "../pages/Profile";
 import NewBlog from "../pages/NewBlog";
 import MyBlogs from "../pages/MyBlogs";
@@ -33,7 +32,6 @@ function AppRouter() {
           >
             <Route path="/" element={<Blogs />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="" element={<PrivateRouter />}>
               <Route path="/newblog" element={<NewBlog />} />
               <Route path="/myblogs" element={<MyBlogs />} />

@@ -22,7 +22,6 @@ import useAuthRequest from "../hooks/useAuthRequest";
 const pages = [
   { name: "Blogs", to: "/" },
   { name: "About", to: "/about" },
-  { name: "Contact", to: "/contact" },
   { name: "Login", to: "/login" },
   { name: "Register", to: "/register" },
 ];
@@ -89,7 +88,7 @@ const NavList = ({ ...props }) => {
     >
       {user ? (
         <>
-          {pages.slice(0, 3).map((page) => (
+          {pages.slice(0, 2).map((page) => (
             <NavLink
               to={page.to}
               key={page.to}
