@@ -12,7 +12,6 @@ import PrivateRouter from "./PrivateRouter";
 import Footer from "../components/Footer";
 import Detail from "../pages/Detail";
 import NotFound from "../pages/NotFound";
-import ErrorBoundary from "../helper/ErrorBoundary";
 
 function AppRouter() {
   return (
