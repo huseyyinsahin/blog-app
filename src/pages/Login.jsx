@@ -5,6 +5,7 @@ import { object, string } from "yup";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import useAuthRequest from "../hooks/useAuthRequest";
 import { Link } from "react-router-dom";
+import loginPhoto from "../assets/image/login-register.jpg";
 
 const Login = () => {
   const { login } = useAuthRequest();
@@ -28,8 +29,9 @@ const Login = () => {
   return (
     <Container
       sx={{
-        backgroundColor: "#e3f2fd",
         minWidth: "100%",
+        backgroundImage: `url(${loginPhoto})`,
+        backgroundSize: "cover",
       }}
     >
       <Container
@@ -40,7 +42,7 @@ const Login = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "calc(100vh - 65px)",
+          height: "calc(100vh - 64px)",
         }}
       >
         <Formik
