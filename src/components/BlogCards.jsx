@@ -14,7 +14,7 @@ import noPhoto from "../assets/image/no-photo.jpg";
 import useBlogRequest from "../hooks/useBlogRequest";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import { toastErrorNotify } from "../helper/ToastNotify";
 
 export default function BlogCards({ blog, page, selectedCategory, search }) {
   const { likeBlog } = useBlogRequest();
