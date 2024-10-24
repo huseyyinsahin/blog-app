@@ -174,7 +174,7 @@ function UpdateBlog({ openUpdate, handleUpdateClose, myBlog }) {
                     type="submit"
                     variant="contained"
                   >
-                    NEW BLOG
+                    UPDATE BLOG
                   </Button>
                 </Box>
               </Form>
