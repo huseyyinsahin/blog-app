@@ -97,7 +97,9 @@ function Home() {
           >
             Register
           </Button>
-          <Typography sx={{ my: "0.6rem", fontWeight: "bold" }}>Or</Typography>
+          <Typography sx={{ my: "0.6rem", fontWeight: "bold", color: "gray" }}>
+            Or
+          </Typography>
           <Button
             variant="outlined"
             sx={{
