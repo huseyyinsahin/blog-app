@@ -163,10 +163,13 @@ const About = () => {
       <SectionTitle variant="h5">Join Us</SectionTitle>
       <JoinUsBox>
         <Typography variant="body1" sx={{ marginBottom: 3 }}>
-          Thank you for visiting <strong>Infinite Blog</strong>! We invite you
-          to explore our articles, share your thoughts, and publish your own
-          writings on our site. If you have any questions or feedback, please
-          feel free to contact us through our contact page.
+          Thank you for visiting <strong>Infinite Blog</strong>! Here, you will
+          find the opportunity to explore inspiring articles on various topics,
+          share your thoughts, and publish your own writings on our site.
+          Unleash your passion for writing and become a part of our community.
+          We invite you to contribute to this rich content environment by
+          sharing your experiences and ideas. Let’s get started; explore, write,
+          and grow together!
         </Typography>
       </JoinUsBox>
     </AboutContainer>
