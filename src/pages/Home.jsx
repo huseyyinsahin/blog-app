@@ -97,7 +97,18 @@ function Home() {
           >
             Register
           </Button>
-          <Typography sx={{ my: "0.6rem", fontWeight: "bold", color: "gray" }}>
+          <Typography
+            sx={{
+              my: "0.6rem",
+              fontWeight: "bold",
+              color: "gray",
+              animation: "fadeIn 2s ease-in-out forwards",
+              "@keyframes fadeIn": {
+                "0%": { opacity: 0 },
+                "100%": { opacity: 1 },
+              },
+            }}
+          >
             Or
           </Typography>
           <Button
@@ -122,7 +133,7 @@ function Home() {
                 "100%": { opacity: 1 },
               },
             }}
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/login")}
           >
             Login
           </Button>
