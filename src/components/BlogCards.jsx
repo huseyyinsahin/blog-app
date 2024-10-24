@@ -41,7 +41,7 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
           height="100%"
           onClick={() => {
             if (user) {
-              navigate(`/detail/${blog._id}`);
+              navigate(`/blogs/detail/${blog._id}`);
             } else {
               toastErrorNotify("Please log in to view the blog details!");
             }
@@ -73,7 +73,7 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             sx={{ cursor: "pointer" }}
             onClick={() => {
               if (user) {
-                navigate(`/detail/${blog._id}`);
+                navigate(`/blogs/detail/${blog._id}`);
               } else {
                 toastErrorNotify("Please log in to view the blog details!");
               }

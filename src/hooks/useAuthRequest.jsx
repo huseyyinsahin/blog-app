@@ -20,7 +20,7 @@ const useAuthRequest = () => {
     try {
       const { data } = await axiosPublic.post("/auth/login/", userData);
       dispatch(loginSuccess(data));
-      navigate("/");
+      navigate("/blogs");
       console.log(data);
     } catch (error) {
       toastErrorNotify("Login failed!");
@@ -34,7 +34,7 @@ const useAuthRequest = () => {
       const { data } = await axiosPublic.post("/users/", userInfo);
       toastSuccessNotify("Register successful");
       dispatch(registerSuccess(data));
-      navigate("/");
+      navigate("/blogs");
       console.log(data);
     } catch (error) {
       toastErrorNotify("Register failed!");

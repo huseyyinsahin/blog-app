@@ -27,8 +27,8 @@ const NotFound = () => {
       <Typography variant="h5" sx={{ marginBottom: "2rem" }}>
         Oops! The page you are looking for does not exist.
       </Typography>
-      <Button variant="contained" color="primary" onClick={() => navigate("/")}>
-        Go to Home
+      <Button variant="contained" color="primary" onClick={() => navigate("/blogs")}>
+        Go to Blogs
       </Button>
     </Box>
   );

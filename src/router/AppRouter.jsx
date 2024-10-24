@@ -12,33 +12,35 @@ import PrivateRouter from "./PrivateRouter";
 import Footer from "../components/Footer";
 import Detail from "../pages/Detail";
 import NotFound from "../pages/NotFound";
+import Home from "../pages/Home";
 
 function AppRouter() {
   return (
     <>
       <Navbar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            element={
-              <>
-                <Outlet />
-                <Footer />
-              </>
-            }
-          >
-            <Route path="/" element={<Blogs />} />
-            <Route path="/about" element={<About />} />
-            <Route path="" element={<PrivateRouter />}>
-              <Route path="/newblog" element={<NewBlog />} />
-              <Route path="/myblogs" element={<MyBlogs />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/detail/:id" element={<Detail />} />
-            </Route>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          element={
+            <>
+              <Outlet />
+              <Footer />
+            </>
+          }
+        >
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/about" element={<About />} />
+          <Route path="" element={<PrivateRouter />}>
+            <Route path="/newblog" element={<NewBlog />} />
+            <Route path="/myblogs" element={<MyBlogs />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/blogs/detail/:id" element={<Detail />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }
