@@ -76,7 +76,7 @@ function BlogDetail() {
       </Button>
     </Container>
   ) : loading ? (
-    <div
+    <Container
       style={{
         display: "flex",
         justifyContent: "center",
@@ -85,7 +85,7 @@ function BlogDetail() {
       }}
     >
       <CircularProgress size={100} />
-    </div>
+    </Container>
   ) : (
     <Card
       sx={{

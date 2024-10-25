@@ -31,7 +31,7 @@ function MyBlogs() {
         </Alert>
       )}
       {loading ? (
-        <div
+        <Container
           style={{
             display: "flex",
             justifyContent: "center",
@@ -40,7 +40,7 @@ function MyBlogs() {
           }}
         >
           <CircularProgress size={150} />
-        </div>
+        </Container>
       ) : (
         <>
           <Typography

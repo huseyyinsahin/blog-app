@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   CircularProgress,
+  Container,
   Pagination,
   Typography,
 } from "@mui/material";
@@ -70,7 +71,7 @@ function Blogs() {
       <Search setSearch={setSearch} search={search} />
 
       {loading ? (
-        <div
+        <Container
           style={{
             display: "flex",
             justifyContent: "center",
@@ -79,7 +80,7 @@ function Blogs() {
           }}
         >
           <CircularProgress size={150} />
-        </div>
+        </Container>
       ) : blogsData.length > 0 ? (
         <>
           <Box
