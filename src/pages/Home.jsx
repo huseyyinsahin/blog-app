@@ -24,13 +24,32 @@ function Home() {
     >
       <Typography
         sx={{
+          background: "linear-gradient(90deg, #0277BD 0%, #00E5FF 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          fontWeight: "bold",
+          textAlign: "center",
+          textShadow: "3px 3px 12px rgba(0, 0, 0, 0.5)",
+          opacity: 0,
+          fontSize: { xs: "3rem", md: "6rem" },
+          animation: "fadeIn 5s ease-in-out forwards",
+          "@keyframes fadeIn": {
+            "0%": { opacity: 0 },
+            "100%": { opacity: 1 },
+          },
+        }}
+      >
+        Infinite Blog
+      </Typography>
+      <Typography
+        sx={{
           color: "#fff",
           fontWeight: "bold",
           textAlign: "center",
-          marginBottom: "5rem",
+          marginBottom: "2rem",
           textShadow: "3px 3px 12px rgba(0, 0, 0, 0.7)",
           opacity: 0,
-          fontSize: { sm: "1rem", md: "2.3rem" },
+          fontSize: { xs: "1rem", md: "2rem" },
           animation: "fadeIn 5s ease-in-out forwards",
           "@keyframes fadeIn": {
             "0%": { opacity: 0 },
@@ -76,8 +95,8 @@ function Home() {
             sx={{
               color: "#027BC0",
               borderColor: "#027BC0",
-              fontSize: "1.5rem",
-              padding: "1rem 3rem",
+              fontSize: { xs: "1.2rem", md: "1.5rem" },
+              padding: { xs: "0.5rem 1rem", md: "1rem 3rem" },
               borderRadius: "50px",
               boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
               textTransform: "capitalize",
@@ -116,8 +135,8 @@ function Home() {
             sx={{
               color: "#027BC0",
               borderColor: "#027BC0",
-              fontSize: "1.5rem",
-              padding: "1rem 3rem",
+              fontSize: { xs: "1.2rem", md: "1.5rem" },
+              padding: { xs: "0.5rem 1rem", md: "1rem 3rem" },
               borderRadius: "50px",
               boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
               textTransform: "capitalize",
