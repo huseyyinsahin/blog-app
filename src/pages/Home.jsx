@@ -25,12 +25,12 @@ function Home() {
       <Typography
         sx={{
           color: "#fff",
-          fontSize: "2rem",
           fontWeight: "bold",
           textAlign: "center",
           marginBottom: "5rem",
           textShadow: "3px 3px 12px rgba(0, 0, 0, 0.7)",
           opacity: 0,
+          fontSize: { sm: "1rem", md: "2.3rem" },
           animation: "fadeIn 5s ease-in-out forwards",
           "@keyframes fadeIn": {
             "0%": { opacity: 0 },
