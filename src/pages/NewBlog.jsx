@@ -21,8 +21,12 @@ function NewBlog() {
   }, []);
 
   const postBlogSchema = object({
-    title: string().required("Title is required"),
-    content: string().required("Content is required"),
+    title: string()
+      .required("Title is required")
+      .min(10, "You must enter at least 10 characters"),
+    content: string()
+      .required("Content is required")
+      .min(300, "You must enter at least 300 characters"),
     image: string()
       .required("Image is required")
       .url("Please enter a valid URL"),
