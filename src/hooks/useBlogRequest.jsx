@@ -7,6 +7,7 @@ import {
   categories,
   blogDetail,
   userBlogs,
+  blogComments,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 
@@ -61,11 +62,11 @@ function useBlogRequest() {
     }
   };
 
-  const commentBlog = async (comment, id) => {
+  const commentBlog = async (comment) => {
     try {
-      await axiosToken.post(`comments`, comment);
+      const { data } = await axiosToken.post(`comments`, comment);
       toastSuccessNotify("Comment added");
-      await getBlogDetail(id);
+      dispatch(blogComments(data));
     } catch (error) {
       toastErrorNotify("Unable to add comment!");
     }

@@ -7,6 +7,7 @@ const blogSlice = createSlice({
     pages: {},
     categories: [],
     detail: [],
+    comments: [],
     myBlogs: [],
     loading: "",
     error: "",
@@ -27,7 +28,11 @@ const blogSlice = createSlice({
     },
     blogDetail: (state, { payload }) => {
       state.detail = payload.data;
+      state.comments = payload.data.comments;
       state.loading = false;
+    },
+    blogComments: (state, { payload }) => {
+      state.comments.push(payload.data);
     },
     userBlogs: (state, { payload }) => {
       state.myBlogs = payload.data;
@@ -40,6 +45,13 @@ const blogSlice = createSlice({
   },
 });
 
-export const { start, blogData, fail, categories, blogDetail, userBlogs } =
-  blogSlice.actions;
+export const {
+  start,
+  blogData,
+  fail,
+  categories,
+  blogDetail,
+  userBlogs,
+  blogComments,
+} = blogSlice.actions;
 export default blogSlice.reducer;
