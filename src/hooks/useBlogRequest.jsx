@@ -24,7 +24,6 @@ function useBlogRequest() {
     try {
       const { data } = await axiosToken(category ? filter : all);
       dispatch(blogData(data));
-      console.log(data);
     } catch (error) {
       dispatch(fail());
     }
@@ -35,7 +34,6 @@ function useBlogRequest() {
     try {
       const { data } = await axiosToken("categories/");
       dispatch(categories(data));
-      console.log(data);
     } catch (error) {
       dispatch(fail());
     }
@@ -56,7 +54,6 @@ function useBlogRequest() {
     try {
       const { data } = await axiosToken(`blogs/${id}`);
       dispatch(blogDetail(data));
-      console.log(data);
     } catch (error) {
       dispatch(fail());
     }
@@ -78,7 +75,6 @@ function useBlogRequest() {
       toastSuccessNotify("Blog added");
     } catch (error) {
       toastErrorNotify("Unable to add Blog!");
-      console.log(error);
     }
   };
 
@@ -86,12 +82,10 @@ function useBlogRequest() {
     dispatch(start());
     try {
       const { data } = await axiosToken(`blogs?author=${id}`);
-      console.log(data);
       dispatch(userBlogs(data));
       getCategories();
     } catch (error) {
       dispatch(fail());
-      console.log(error);
     }
   };
 
@@ -102,7 +96,6 @@ function useBlogRequest() {
       getUserBlogs(userId);
     } catch (error) {
       toastErrorNotify("Blog could not be deleted!");
-      console.log(error);
     }
   };
 
@@ -113,7 +106,6 @@ function useBlogRequest() {
       getUserBlogs(userId);
     } catch (error) {
       toastErrorNotify("Blog update failed!");
-      console.log(error);
     }
   };
 

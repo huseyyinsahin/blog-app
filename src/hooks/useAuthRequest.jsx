@@ -21,7 +21,6 @@ const useAuthRequest = () => {
       const { data } = await axiosPublic.post("/auth/login/", userData);
       dispatch(loginSuccess(data));
       navigate("/blogs");
-      console.log(data);
     } catch (error) {
       toastErrorNotify("Login failed!");
       dispatch(fail());
@@ -35,7 +34,6 @@ const useAuthRequest = () => {
       toastSuccessNotify("Register successful");
       dispatch(registerSuccess(data));
       navigate("/blogs");
-      console.log(data);
     } catch (error) {
       toastErrorNotify("Register failed!");
       dispatch(fail());
