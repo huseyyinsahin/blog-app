@@ -1,7 +1,6 @@
-import React from "react";
-import { Box, Typography, Link, Stack } from "@mui/material";
+import { Box, Typography, Link, Stack, Divider } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -11,22 +10,30 @@ const Footer = () => {
       sx={{
         bgcolor: "#027BC0",
         color: "#fff",
-        padding: "1rem",
+        paddingY: "1rem",
+        paddingX: "1.5rem",
+        textAlign: "center",
       }}
     >
       <Stack spacing={2} alignItems="center">
         <Typography variant="h6" component="h2" gutterBottom>
           Infinite Blog
         </Typography>
+
+        <Typography variant="body2" sx={{ maxWidth: "600px" }}>
+          Keep up with the latest trends in tech and design, and find
+          inspiration for your next project!
+        </Typography>
+
         <Stack direction="row" spacing={2}>
           <Link href="#" color="inherit" underline="hover">
-            <FacebookIcon />
+            <FacebookIcon fontSize="medium" />
           </Link>
           <Link href="#" color="inherit" underline="hover">
-            <TwitterIcon />
+            <XIcon fontSize="medium" />
           </Link>
           <Link href="#" color="inherit" underline="hover">
-            <InstagramIcon />
+            <InstagramIcon fontSize="medium" />
           </Link>
           <Link
             href="https://github.com/huseyyinsahin"
@@ -34,10 +41,17 @@ const Footer = () => {
             color="inherit"
             underline="hover"
           >
-            <GitHubIcon />
+            <GitHubIcon fontSize="medium" />
           </Link>
         </Stack>
-        <Typography variant="body2" align="center">
+
+        <Divider sx={{ bgcolor: "#fff", width: "80%", marginY: "0.5rem" }} />
+
+        <Typography
+          variant="caption"
+          align="center"
+          sx={{ fontSize: "0.8rem" }}
+        >
           © {new Date().getFullYear()} Infinite Blog. All rights reserved.
         </Typography>
       </Stack>
