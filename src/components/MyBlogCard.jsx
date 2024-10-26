@@ -45,7 +45,7 @@ function MyBlogCard({ myBlog }) {
           component="div"
           onClick={() => {
             getBlogDetail(myBlog._id);
-            navigate(`/detail/${myBlog._id}`);
+            navigate(`/blogs/detail/${myBlog._id}`);
           }}
           sx={{ cursor: "pointer" }}
         >
