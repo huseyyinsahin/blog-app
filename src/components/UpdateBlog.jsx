@@ -75,7 +75,7 @@ function UpdateBlog({ openUpdate, handleUpdateClose, myBlog }) {
                   sx={{
                     width: {
                       xs: "280px",
-                      sm: "450px",
+                      sm: "500px",
                     },
                     display: "flex",
                     flexDirection: "column",
@@ -162,7 +162,7 @@ function UpdateBlog({ openUpdate, handleUpdateClose, myBlog }) {
                     label="Content"
                     variant="outlined"
                     type="text"
-                    rows={4}
+                    rows={8}
                     multiline
                     onChange={handleChange}
                     value={values.content}
