@@ -37,7 +37,6 @@ function NewBlog() {
   return (
     <Container
       sx={{
-        minHeight: "90vh",
         padding: "3rem",
         display: "flex",
         justifyContent: "center",
@@ -72,12 +71,14 @@ function NewBlog() {
             <Box
               sx={{
                 width: {
-                  xs: "300px",
-                  sm: "450px",
+                  xs: "340px",
+                  sm: "650px",
                 },
                 display: "flex",
                 flexDirection: "column",
                 gap: "1rem",
+                padding: { xs: "", sm: "3rem" },
+                boxShadow: { xs: "", sm: "5px 5px 5px 5px gray" },
               }}
             >
               <Typography
@@ -160,7 +161,7 @@ function NewBlog() {
                 label="Content"
                 variant="outlined"
                 type="text"
-                rows={4}
+                rows={7}
                 multiline
                 onChange={handleChange}
                 value={values.content}
