@@ -52,7 +52,7 @@ const Footer = () => {
           align="center"
           sx={{ fontSize: "0.8rem" }}
         >
-          © {new Date().getFullYear()} Infinite Blog. All rights reserved.
+          © 2024 Infinite Blog. All rights reserved.
         </Typography>
       </Stack>
     </Box>
