@@ -16,6 +16,7 @@ import UpdateBlog from "./UpdateBlog";
 function MyBlogCard({ myBlog }) {
   const navigate = useNavigate();
   const { getBlogDetail, deleteUserBlogs } = useBlogRequest();
+  const { user } = useSelector((state) => state.auth);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -25,7 +26,7 @@ function MyBlogCard({ myBlog }) {
   const handleClose = (confirm) => {
     setOpen(false);
     if (confirm) {
-      deleteUserBlogs(myBlog._id, myBlog.userId);
+      deleteUserBlogs(myBlog._id, user._id);
     }
   };
 
