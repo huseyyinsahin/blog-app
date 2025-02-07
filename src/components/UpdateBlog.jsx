@@ -20,6 +20,7 @@ import useBlogRequest from "../hooks/useBlogRequest";
 
 function UpdateBlog({ openUpdate, handleUpdateClose, myBlog }) {
   const { categories } = useSelector((state) => state.blog);
+  const { user } = useSelector((state) => state.auth);
   const { updateUserBlogs } = useBlogRequest();
 
   const putBlogSchema = object({
@@ -57,7 +58,7 @@ function UpdateBlog({ openUpdate, handleUpdateClose, myBlog }) {
             }}
             validationSchema={putBlogSchema}
             onSubmit={(values, actions) => {
-              updateUserBlogs(myBlog._id, myBlog.userId, values);
+              updateUserBlogs(myBlog._id, user._id, values);
               actions.resetForm();
               actions.setSubmitting(false);
             }}
