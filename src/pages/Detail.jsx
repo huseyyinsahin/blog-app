@@ -131,12 +131,7 @@ function BlogDetail() {
       <CardMedia
         component="img"
         height="400"
-        image={
-          detail.image ==
-          "https://geekflare.com/wp-content/uploads/2016/04/featured-image-generator.jpg"
-            ? noPhoto
-            : detail.image
-        }
+        image={detail.image}
         alt="Nature"
         sx={{
           borderRadius: "20px",

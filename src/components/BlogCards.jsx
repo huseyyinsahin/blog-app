@@ -53,12 +53,7 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             borderRadius: { xs: "16px 16px 0 0", md: "16px 0 0 16px" },
             objectFit: "cover",
           }}
-          src={
-            blog.image ==
-            "https://geekflare.com/wp-content/uploads/2016/04/featured-image-generator.jpg"
-              ? noPhoto
-              : blog.image
-          }
+          src={blog.image}
         />
         <Box
           sx={{
