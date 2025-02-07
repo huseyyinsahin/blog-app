@@ -25,7 +25,7 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
     <>
       <Card
         sx={{
-          width: { xs: "100%", sm: "80%", md: "70%" },
+          width: { xs: "100%", sm: "80%", md: "70%", xl: "55%" },
           margin: "1rem",
           height: { xs: "auto", md: "200px" },
           borderRadius: "16px",
