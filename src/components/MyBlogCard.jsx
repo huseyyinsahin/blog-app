@@ -59,7 +59,7 @@ function MyBlogCard({ myBlog }) {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {myBlog.title.slice(0, 22)}...
+              {myBlog.title.slice(0, 22)}
             </Typography>
             <Typography
               dangerouslySetInnerHTML={{
