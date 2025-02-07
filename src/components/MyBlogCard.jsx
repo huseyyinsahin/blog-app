@@ -12,6 +12,7 @@ import useBlogRequest from "../hooks/useBlogRequest";
 import DeleteBlog from "./DeleteBlog";
 import { useState } from "react";
 import UpdateBlog from "./UpdateBlog";
+import { useSelector } from "react-redux";
 
 function MyBlogCard({ myBlog }) {
   const navigate = useNavigate();
