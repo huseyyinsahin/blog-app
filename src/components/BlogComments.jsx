@@ -1,6 +1,7 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { useSelector } from "react-redux";
+import userPhoto from "../assets/image/user.png";
 
 function BlogComments() {
   const { comments } = useSelector((state) => state.blog);
@@ -34,16 +35,18 @@ function BlogComments() {
             boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
           }}
         >
-          <Avatar
-            sx={{
-              bgcolor: "primary.main",
+          <img
+            src={comment.userId.image ? comment.userId.image : userPhoto}
+            alt="Profile"
+            style={{
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
               marginRight: "0.5rem",
-              width: 35,
-              height: 35,
+              objectFit: "cover",
+              marginTop:"7px"
             }}
-          >
-            <PersonIcon sx={{ fontSize: "1.5rem" }} />
-          </Avatar>
+          />
           <Box sx={{ flexGrow: 1 }}>
             <Typography
               variant="subtitle2"
