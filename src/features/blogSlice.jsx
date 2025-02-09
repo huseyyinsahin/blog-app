@@ -33,6 +33,7 @@ const blogSlice = createSlice({
     },
     blogComments: (state, { payload }) => {
       state.comments.push(payload.data);
+      //sayfa yenilenmeden yorum ekleme
     },
     userBlogs: (state, { payload }) => {
       state.myBlogs = payload.data;

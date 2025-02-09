@@ -69,6 +69,16 @@ function useBlogRequest() {
     }
   };
 
+  const deleteCommentBlog = async (id, blogId) => {
+    try {
+      await axiosToken.delete(`comments/${id}`);
+      toastSuccessNotify("Comment deleted");
+      getBlogDetail(blogId);
+    } catch (error) {
+      toastErrorNotify("Deleting comment failed!");
+    }
+  };
+
   const postNewBlog = async (newBlogData) => {
     try {
       await axiosToken.post(`blogs`, newBlogData);
@@ -119,6 +129,7 @@ function useBlogRequest() {
     getUserBlogs,
     deleteUserBlogs,
     updateUserBlogs,
+    deleteCommentBlog,
   };
 }
 

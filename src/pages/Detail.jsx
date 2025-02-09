@@ -241,7 +241,7 @@ function BlogDetail() {
         </Button>
       </Box>
 
-      <BlogComments />
+      <BlogComments detail={detail._id} />
     </Card>
   );
 }

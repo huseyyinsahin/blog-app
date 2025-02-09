@@ -1,11 +1,13 @@
-import { Avatar, Box, Typography } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
+import { Box, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import userPhoto from "../assets/image/user.png";
+import useBlogRequest from "../hooks/useBlogRequest";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-function BlogComments() {
+function BlogComments({ detail: blogId }) {
   const { comments } = useSelector((state) => state.blog);
   const { user } = useSelector((state) => state.auth);
+  const { deleteCommentBlog } = useBlogRequest();
 
   return (
     <Box
@@ -44,7 +46,7 @@ function BlogComments() {
               borderRadius: "50%",
               marginRight: "0.5rem",
               objectFit: "cover",
-              marginTop:"7px"
+              marginTop: "7px",
             }}
           />
           <Box sx={{ flexGrow: 1 }}>
@@ -66,6 +68,14 @@ function BlogComments() {
               {comment.comment}
             </Typography>
           </Box>
+          {comment.userId.username === user.username && (
+            <DeleteIcon
+              sx={{ cursor: "pointer" }}
+              onClick={() => {
+                deleteCommentBlog(comment._id, blogId);
+              }}
+            />
+          )}
         </Box>
       ))}
     </Box>
