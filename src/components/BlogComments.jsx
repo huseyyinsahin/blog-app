@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 function BlogComments() {
   const { comments } = useSelector((state) => state.blog);
-  const { user } = useSelector((state) => state.auth);
 
   return (
     <Box
@@ -49,9 +48,7 @@ function BlogComments() {
               variant="subtitle2"
               sx={{ fontWeight: "bold", color: "#333" }}
             >
-              {comment.userId.username
-                ? comment.userId.username
-                : user.username}
+              {comment.userId.username}
             </Typography>
             <Typography
               variant="body2"
