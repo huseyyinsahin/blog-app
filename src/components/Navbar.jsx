@@ -193,9 +193,15 @@ const Header = () => {
                   onClick={handleMenuOpen}
                   color="inherit"
                 >
-                  <AccountCircleIcon
-                    fontSize="large"
-                    sx={{ color: "#0288D1" }}
+                  <img
+                    src={user.image}
+                    alt="Profile"
+                    style={{
+                      width: "35px",
+                      height: "35px",
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                    }}
                   />
                 </IconButton>
                 <Typography

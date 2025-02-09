@@ -161,16 +161,17 @@ function BlogDetail() {
         padding="1rem"
       >
         <Box display="flex" alignItems="center">
-          <Avatar
-            sx={{
-              bgcolor: "primary.main",
+          <img
+            src={detail.userId?.image}
+            alt="Profile"
+            style={{
+              width: "48px",
+              height: "48px",
+              borderRadius: "50%",
               marginRight: "0.5rem",
-              width: 48,
-              height: 48,
+              objectFit: "cover",
             }}
-          >
-            <PersonIcon sx={{ fontSize: "1.5rem" }} />
-          </Avatar>
+          />
           <Typography
             variant="subtitle1"
             sx={{ fontWeight: "bold", color: "#333" }}
