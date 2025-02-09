@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
-  Avatar,
   Card,
   CardMedia,
   CardContent,
@@ -18,14 +17,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CommentIcon from "@mui/icons-material/Comment";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import PersonIcon from "@mui/icons-material/Person";
 import { useSelector } from "react-redux";
-import noPhoto from "../assets/image/no-photo.jpg";
 import useBlogRequest from "../hooks/useBlogRequest";
-import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate, useParams } from "react-router-dom";
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 import BlogComments from "../components/BlogComments";
+import userPhoto from "../assets/image/user.png";
 
 function BlogDetail() {
   const { detail, loading, error } = useSelector((state) => state.blog);
@@ -162,7 +159,7 @@ function BlogDetail() {
       >
         <Box display="flex" alignItems="center">
           <img
-            src={detail.userId?.image}
+            src={detail.userId?.image ? detail.userId?.image : userPhoto}
             alt="Profile"
             style={{
               width: "48px",

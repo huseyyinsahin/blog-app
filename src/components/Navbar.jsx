@@ -18,6 +18,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useAuthRequest from "../hooks/useAuthRequest";
+import userPhoto from "../assets/image/user.png";
 
 const pages = [
   { name: "Home", to: "/" },
@@ -194,7 +195,7 @@ const Header = () => {
                   color="inherit"
                 >
                   <img
-                    src={user.image}
+                    src={user.image ? user.image : userPhoto}
                     alt="Profile"
                     style={{
                       width: "35px",
