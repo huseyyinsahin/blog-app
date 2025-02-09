@@ -32,3 +32,6 @@ The technologies used in this project are as follows:
 ## Live
 
 [Live](https://blog-app-delta-plum.vercel.app/)
+
+### If you don't want to bother signing up, here is a sample account:
+- email: www@mail.com | password: Helloworld123* 
