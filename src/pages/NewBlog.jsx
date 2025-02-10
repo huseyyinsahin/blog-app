@@ -23,10 +23,12 @@ function NewBlog() {
   const postBlogSchema = object({
     title: string()
       .required("Title is required")
-      .min(10, "You must enter at least 10 characters"),
+      .min(10, "You must enter at least 10 characters")
+      .max(55, "You cannot enter more than 55 characters"),
     content: string()
       .required("Content is required")
-      .min(300, "You must enter at least 300 characters"),
+      .min(300, "You must enter at least 300 characters")
+      .max(5000, "You cannot enter more than 5000 characters"),
     image: string()
       .required("Image is required")
       .url("Please enter a valid URL"),
