@@ -36,6 +36,8 @@ const Register = () => {
         "Password must contain at least one special character (@$!%*?&)"
       ),
     image: string().url("Please enter a valid URL"),
+    city: string().max(50, "City must be at most 50 characters"),
+    bio: string().max(300, "Biography must be at most 300 characters"),
   });
 
   return (
