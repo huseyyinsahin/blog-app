@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Blogs from "../pages/Blogs";
 import MyBlogs from "../pages/MyBlogs";
 import Detail from "../pages/Detail";
+import UserDetail from "../pages/UserDetail";
 
 const Home = lazy(() => import("../pages/Home"));
 const Login = lazy(() => import("../pages/Login"));
@@ -53,6 +54,7 @@ function AppRouter() {
               <Route path="/myblogs" element={<MyBlogs />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/blogs/detail/:id" element={<Detail />} />
+              <Route path="/users/:id" element={<UserDetail />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />

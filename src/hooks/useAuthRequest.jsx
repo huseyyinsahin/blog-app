@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   fail,
+  getUserDetail,
   loginSuccess,
   logoutSuccess,
   registerSuccess,
@@ -61,7 +62,17 @@ const useAuthRequest = () => {
     }
   };
 
-  return { register, login, logout, userUpdate };
+  const userDetails = async (id) => {
+    dispatch(start());
+    try {
+      const { data } = await axiosToken.get(`/users/${id}`);
+      dispatch(getUserDetail(data));
+    } catch (error) {
+      dispatch(fail());
+    }
+  };
+
+  return { register, login, logout, userUpdate, userDetails };
 };
 
 export default useAuthRequest;

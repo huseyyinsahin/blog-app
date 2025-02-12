@@ -48,8 +48,8 @@ function BlogDetail() {
   const handleComment = (e) => {
     const prevLength = comment.comment?.length || 0;
     const newLength = e.target.value.length;
-    //eski comment karakter uzunluğuyla yenisini karşılaştırarak silindi mi yoksa yeni karaktermi eklendi onu anlıyoruz ve ona göre 
-//  stateyi(commentCharacter) artırıyoruz yada azaltıyoruz.
+    //eski comment karakter uzunluğuyla yenisini karşılaştırarak silindi mi yoksa yeni karaktermi eklendi onu anlıyoruz ve ona göre
+    //  stateyi(commentCharacter) artırıyoruz yada azaltıyoruz.
     setComment({ ...comment, [e.target.name]: e.target.value });
 
     if (newLength > prevLength) {
@@ -65,7 +65,7 @@ function BlogDetail() {
       blogId: detail._id,
       comment: "",
     });
-    setCommentCharacter(500)
+    setCommentCharacter(500);
   };
 
   const handleReload = () => {
@@ -174,6 +174,9 @@ function BlogDetail() {
       >
         <Box display="flex" alignItems="center">
           <img
+            onClick={() => {
+              navigate(`/users/${detail.userId._id}`);
+            }}
             src={detail.userId?.image ? detail.userId?.image : userPhoto}
             alt="Profile"
             style={{
@@ -182,11 +185,15 @@ function BlogDetail() {
               borderRadius: "50%",
               marginRight: "0.5rem",
               objectFit: "cover",
+              cursor: "pointer",
             }}
           />
           <Typography
+            onClick={() => {
+              navigate(`/users/${detail.userId._id}`);
+            }}
             variant="subtitle1"
-            sx={{ fontWeight: "bold", color: "#333" }}
+            sx={{ fontWeight: "bold", color: "#333", cursor: "pointer" }}
           >
             {detail.userId?.username}
           </Typography>

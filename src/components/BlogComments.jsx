@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import userPhoto from "../assets/image/user.png";
 import useBlogRequest from "../hooks/useBlogRequest";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 function BlogComments({ detail: blogId }) {
   const { comments } = useSelector((state) => state.blog);
   const { user } = useSelector((state) => state.auth);
   const { deleteCommentBlog } = useBlogRequest();
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -38,6 +40,9 @@ function BlogComments({ detail: blogId }) {
           }}
         >
           <img
+            onClick={() => {
+              navigate(`/users/${comment.userId._id}`);
+            }}
             src={comment.userId.image ? comment.userId.image : userPhoto}
             alt="Profile"
             style={{
@@ -47,12 +52,16 @@ function BlogComments({ detail: blogId }) {
               marginRight: "0.5rem",
               objectFit: "cover",
               marginTop: "7px",
+              cursor: "pointer",
             }}
           />
           <Box sx={{ flexGrow: 1 }}>
             <Typography
+              onClick={() => {
+                navigate(`/users/${comment.userId._id}`);
+              }}
               variant="subtitle2"
-              sx={{ fontWeight: "bold", color: "#333" }}
+              sx={{ fontWeight: "bold", color: "#333", cursor: "pointer" }}
             >
               {comment.userId.username
                 ? comment.userId.username
