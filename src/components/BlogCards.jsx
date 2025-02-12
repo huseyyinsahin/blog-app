@@ -10,7 +10,6 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CommentIcon from "@mui/icons-material/Comment";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import noPhoto from "../assets/image/no-photo.jpg";
 import useBlogRequest from "../hooks/useBlogRequest";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -47,7 +46,7 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             }
           }}
           sx={{
-            width: { xs: "100%", md: "500px" },
+            width: { xs: "100%", md: "30%" },
             height: { xs: "200px", md: "100%" },
             cursor: "pointer",
             borderRadius: { xs: "16px 16px 0 0", md: "16px 0 0 16px" },
@@ -61,7 +60,7 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
             flexDirection: "column",
             justifyContent: "space-between",
             textAlign: "center",
-            width: "100%",
+            width: { xs: "100%", md: "70%" },
           }}
         >
           <CardContent
@@ -80,7 +79,9 @@ export default function BlogCards({ blog, page, selectedCategory, search }) {
               component="div"
               sx={{ color: "#0277bd" }}
             >
-              {blog.title}
+              {blog.title.length > 50
+                ? `${blog.title.slice(0, 50)}...`
+                : blog.title}
             </Typography>
             <Typography variant="subtitle2" color="text.secondary">
               {new Date(blog.createdAt).toLocaleDateString("en-EN")}

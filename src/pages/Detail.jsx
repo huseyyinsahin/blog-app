@@ -196,7 +196,7 @@ function BlogDetail() {
           color="text.secondary"
           sx={{ fontStyle: "italic" }}
         >
-          {new Date(detail.createdAt).toLocaleString("en-EN")}
+          {new Date(detail.createdAt).toLocaleDateString("en-EN")}
         </Typography>
       </Box>
 

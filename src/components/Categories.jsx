@@ -12,7 +12,7 @@ function Categories({ categories, setSelectedCategory, handleCategoryChange }) {
       }}
     >
       <Grid2 container spacing={1} justifyContent="center">
-        <Grid2 size={{ xs: 2, sm: "auto" }}>
+        <Grid2 size={{ xs: 4, sm: "auto" }}>
           <Button
             variant="contained"
             color="primary"
@@ -33,7 +33,7 @@ function Categories({ categories, setSelectedCategory, handleCategoryChange }) {
         </Grid2>
 
         {categories.map(({ name, _id }) => (
-          <Grid2 size={{ xs: 2, sm: "auto" }} key={_id}>
+          <Grid2 size={{ xs: 4, sm: "auto" }} key={_id}>
             <Button
               variant="contained"
               color="primary"
