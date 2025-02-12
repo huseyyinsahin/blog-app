@@ -12,6 +12,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import useAuthRequest from "../hooks/useAuthRequest";
 import { useSelector } from "react-redux";
+import noImage from "../assets/image/user.png";
 
 const UserDetail = () => {
   const { id } = useParams();
@@ -35,12 +36,19 @@ const UserDetail = () => {
       <CircularProgress size={150} color="primary" />
     </Container>
   ) : (
-    <Box sx={{ padding: "32px", maxWidth: "1200px", margin: "auto" }}>
+    <Box
+      sx={{
+        padding: "32px",
+        maxWidth: "1200px",
+        margin: "auto",
+        minHeight: "90vh",
+      }}
+    >
       <Paper
         sx={{
           padding: "32px",
           display: "flex",
-          flexDirection: "row",
+          flexDirection: { xs: "column", md: "row" },
           borderRadius: "16px",
           boxShadow: 10,
           background: "#ffffff",
@@ -54,8 +62,10 @@ const UserDetail = () => {
             borderRadius: "8px",
             objectFit: "cover",
             boxShadow: 4,
+            maxHeight: "200px",
+            margin: { xs: "auto", md: "0" },
           }}
-          image={userDetail.image}
+          image={userDetail.image ? userDetail.image : noImage}
           alt={`${userDetail.firstName} ${userDetail.lastName}`}
         />
         <CardContent
@@ -64,15 +74,16 @@ const UserDetail = () => {
             flexDirection: "column",
             justifyContent: "center",
             paddingLeft: "32px",
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-          <Typography variant="h4" sx={{ fontWeight: "bold", color: "#333" }}>
+          <Typography
+            variant="h5"
+            sx={{ fontWeight: "bold", color: "#333", marginBottom: "12px" }}
+          >
             {`${userDetail.firstName} ${userDetail.lastName}`}
           </Typography>
-          <Typography
-            variant="body2"
-            sx={{ color: "#555", marginBottom: "8px" }}
-          >
+          <Typography variant="body2" sx={{ color: "#555" }}>
             {userDetail.username}
           </Typography>
           <Typography
@@ -146,7 +157,7 @@ const UserDetail = () => {
               <Typography
                 variant="body2"
                 color="textSecondary"
-                sx={{ marginBottom: "16px" }}
+                sx={{ marginBottom: "16px", wordWrap: "break-word" }}
               >
                 {blog.content.slice(0, 80)}...
               </Typography>
