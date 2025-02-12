@@ -103,7 +103,7 @@ const UserDetail = () => {
         Recent Blog Posts
       </Typography>
       <Grid container spacing={3}>
-        {userDetail.blogs.map((blog) => (
+        {userDetail.blogs?.map((blog) => (
           <Grid
             onClick={() => navigate(`/blogs/detail/${blog._id}`)}
             item
