@@ -1,4 +1,4 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, Grid2 } from "@mui/material";
 import React from "react";
 
 function Categories({ categories, setSelectedCategory, handleCategoryChange }) {
@@ -7,34 +7,13 @@ function Categories({ categories, setSelectedCategory, handleCategoryChange }) {
       sx={{
         display: "flex",
         justifyContent: "center",
-        margin: "2rem 0 2rem 0",
-        flexWrap: "wrap",
+        margin: "2rem 0",
+        width: "100%",
       }}
     >
-      <Stack
-        direction={{ xs: "column", sm: "row" }}
-        spacing={1}
-        sx={{ justifyContent: "center", flexWrap: "wrap" }}
-      >
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            textTransform: "none",
-            fontWeight: "bold",
-            borderRadius: "20px",
-            padding: "0.5rem 1.5rem",
-          }}
-          onClick={() => {
-            setSelectedCategory("");
-            handleCategoryChange();
-          }}
-        >
-          All Blogs
-        </Button>
-        {categories.map(({ name, _id }) => (
+      <Grid2 container spacing={1} justifyContent="center">
+        <Grid2 size={{ xs: 2, sm: "auto" }}>
           <Button
-            key={_id}
             variant="contained"
             color="primary"
             sx={{
@@ -42,16 +21,39 @@ function Categories({ categories, setSelectedCategory, handleCategoryChange }) {
               fontWeight: "bold",
               borderRadius: "20px",
               padding: "0.5rem 1.5rem",
+              width: "100%",
             }}
             onClick={() => {
-              setSelectedCategory(_id);
+              setSelectedCategory("");
               handleCategoryChange();
             }}
           >
-            {name}
+            All Blogs
           </Button>
+        </Grid2>
+
+        {categories.map(({ name, _id }) => (
+          <Grid2 size={{ xs: 2, sm: "auto" }} key={_id}>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                textTransform: "none",
+                fontWeight: "bold",
+                borderRadius: "20px",
+                padding: "0.5rem 1.5rem",
+                width: "100%",
+              }}
+              onClick={() => {
+                setSelectedCategory(_id);
+                handleCategoryChange();
+              }}
+            >
+              {name}
+            </Button>
+          </Grid2>
         ))}
-      </Stack>
+      </Grid2>
     </Box>
   );
 }
