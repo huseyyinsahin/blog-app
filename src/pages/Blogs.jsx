@@ -25,7 +25,7 @@ function Blogs() {
   const [page, setPage] = useState(1);
 
   const [categoryChange, setCategoryChange] = useState(false);
-  const handleCategoryChange = () => setCategoryChange(!categoryChange);
+  const handleCategoryChange = () => setCategoryChange(!categoryChange);// aynı kategoriye tekrardan tıklanınca blogları yenilesin diye (normalde aynı kategoriye tekrar basıldığında selectedCategory değişmediğinden bir yenilenme olmuyor)
 
   useEffect(() => {
     getBlogs();

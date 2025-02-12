@@ -45,10 +45,10 @@ const Nav = () => {
       <Drawer
         open={open}
         onClose={toggleDrawer(false)}
-        anchor="right"
+        anchor="top"
         sx={{
           "& .MuiDrawer-paper": {
-            width: "75%",
+            width: "100%",
             padding: "1rem",
             marginTop: "2rem",
           },

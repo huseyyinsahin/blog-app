@@ -65,6 +65,7 @@ function BlogDetail() {
       blogId: detail._id,
       comment: "",
     });
+    setCommentCharacter(500)
   };
 
   const handleReload = () => {
