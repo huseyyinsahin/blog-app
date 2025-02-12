@@ -36,13 +36,27 @@ function BlogDetail() {
     getBlogDetail(id);
   }, []);
 
+  //! comment
+
   const [comment, setComment] = useState({
     blogId: detail._id,
     comment: "",
   });
 
+  const [commentCharacter, setCommentCharacter] = useState(500);
+
   const handleComment = (e) => {
+    const prevLength = comment.comment?.length || 0;
+    const newLength = e.target.value.length;
+    //eski comment karakter uzunluğuyla yenisini karşılaştırarak silindi mi yoksa yeni karaktermi eklendi onu anlıyoruz ve ona göre 
+//  stateyi(commentCharacter) artırıyoruz yada azaltıyoruz.
     setComment({ ...comment, [e.target.name]: e.target.value });
+
+    if (newLength > prevLength) {
+      setCommentCharacter((prev) => prev - 1);
+    } else {
+      setCommentCharacter((prev) => prev + 1);
+    }
   };
 
   const handleCommentSubmit = () => {
@@ -231,11 +245,16 @@ function BlogDetail() {
           value={comment.comment}
           onChange={handleComment}
         />
+        <Typography
+          sx={{ color: "gray", fontSize: "0.7rem", marginTop: "0.5rem" }}
+        >
+          Maximum 500 characters: {commentCharacter}
+        </Typography>
         <Button
           variant="contained"
           color="primary"
           onClick={handleCommentSubmit}
-          sx={{ marginTop: "1rem" }}
+          sx={{ marginTop: "0.3rem" }}
         >
           Add Comment
         </Button>
